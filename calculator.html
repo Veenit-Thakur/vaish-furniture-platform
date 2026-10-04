@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimate Gradient Dashboard + Calculator</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{
+      background:linear-gradient(135deg,#2b1055,#7597de,#00f5a0,#00d9f5);
+      background-size:400% 400%;
+      animation:gradientShift 15s ease infinite;
+      color:#fff;overflow-x:hidden;
+    }
+    @keyframes gradientShift{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+    nav{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:20px 60px;backdrop-filter:blur(10px);
+      background:rgba(0,0,0,0.3);position:fixed;width:100%;z-index:10;
+    }
+    nav h1{font-size:28px;font-weight:700;letter-spacing:2px}
+    nav ul{display:flex;gap:25px;list-style:none}
+    nav ul li a{text-decoration:none;color:white;transition:0.3s}
+    nav ul li a:hover{color:#00f5a0}
+    header{
+      height:100vh;display:flex;align-items:center;justify-content:center;
+      flex-direction:column;text-align:center;padding:20px;
+    }
+    header h1{font-size:4rem;text-shadow:0 0 15px #00f5a0}
+    header p{font-size:1.2rem;margin-top:20px;max-width:700px;line-height:1.6}
+    button{
+      margin-top:30px;padding:15px 40px;border:none;border-radius:40px;
+      background:linear-gradient(45deg,#00f5a0,#00d9f5);
+      color:#000;font-weight:bold;cursor:pointer;transition:0.3s;
+    }
+    button:hover{transform:scale(1.05);box-shadow:0 0 20px #00f5a0}
+    .container{
+      display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;
+      gap:40px;padding:60px;
+    }
+    .card{
+      background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);
+      padding:30px;border-radius:20px;width:350px;transition:0.3s;
+      box-shadow:0 0 15px rgba(0,0,0,0.2);
+    }
+    .card:hover{transform:translateY(-10px);box-shadow:0 0 30px #00f5a0}
+    .card h2{text-align:center;margin-bottom:20px}
+    .calculator input{
+      width:100%;padding:15px;font-size:1.3rem;border:none;
+      border-radius:10px;margin-bottom:15px;text-align:right;
+    }
+    .buttons{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
+    }
+    .buttons button{
+      background:rgba(255,255,255,0.2);border:none;border-radius:10px;
+      font-size:1.2rem;color:white;padding:15px;cursor:pointer;
+      transition:0.3s;
+    }
+    .buttons button:hover{background:#00f5a0;color:#000}
+    footer{
+      text-align:center;padding:40px;font-size:1rem;background:rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h1>🌈 Veenit's Dashboard</h1>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#calc">Calculator</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <header id="home">
+    <h1>Welcome to the Ultimate Dashboard</h1>
+    <p>A single-file interactive gradient-powered page with animations, a scientific calculator, and futuristic vibes 🚀</p>
+    <button onclick="scrollToCalc()">Open Calculator</button>
+  </header>
+
+  <section class="container" id="calc">
+    <div class="card calculator">
+      <h2>🧮 Scientific Calculator</h2>
+      <input type="text" id="display" readonly>
+      <div class="buttons">
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="deleteChar()">⌫</button>
+        <button onclick="appendValue('(')">(</button>
+        <button onclick="appendValue(')')">)</button>
+
+        <button onclick="appendValue('7')">7</button>
+        <button onclick="appendValue('8')">8</button>
+        <button onclick="appendValue('9')">9</button>
+        <button onclick="appendValue('/')">÷</button>
+
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button onclick="appendValue('*')">×</button>
+
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button onclick="appendValue('-')">−</button>
+
+        <button onclick="appendValue('0')">0</button>
+        <button onclick="appendValue('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="appendValue('+')">+</button>
+
+        <button onclick="appendValue('Math.sin(')">sin</button>
+        <button onclick="appendValue('Math.cos(')">cos</button>
+        <button onclick="appendValue('Math.tan(')">tan</button>
+        <button onclick="appendValue('Math.sqrt(')">√</button>
+
+        <button onclick="appendValue('Math.pow(')">xʸ</button>
+        <button onclick="appendValue('Math.log(')">log</button>
+        <button onclick="appendValue('Math.exp(')">exp</button>
+        <button onclick="factorial()">n!</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2025 Veenit Kumar | Built with 💙 in pure HTML, CSS & JS</footer>
+
+  <script>
+    const display=document.getElementById('display');
+    function appendValue(val){display.value+=val;}
+    function clearDisplay(){display.value=''}
+    function deleteChar(){display.value=display.value.slice(0,-1)}
+    function calculate(){
+      try{display.value=eval(display.value)}
+      catch(e){display.value='Error'}
+    }
+    function factorial(){
+      const num=parseInt(display.value);
+      if(num<0)return display.value='Error';
+      let f=1;for(let i=1;i<=num;i++)f*=i;
+      display.value=f;
+    }
+    function scrollToCalc(){
+      document.getElementById('calc').scrollIntoView({behavior:'smooth'});
+    }
+    // Smooth nav scroll
+    document.querySelectorAll('nav a').forEach(a=>{
+      a.addEventListener('click',e=>{
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+      });
+    });
+  </script>
+</body>
+</html>

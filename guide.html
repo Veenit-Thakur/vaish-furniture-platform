@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Website Guide | VAISH</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:'Inter', sans-serif;
+  background: #111827;
+  color:#EAEAEA;
+}
+
+/* NAV */
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 60px;
+}
+nav ul{display:flex;gap:32px;list-style:none;}
+nav a{
+  position: relative;
+  text-decoration: none;
+  color: #f2dfdf;
+  font-weight: 400;
+  padding: 6px 10px;
+  transition: 0.35s cubic-bezier(.16,.72,.48,1.12);
+}
+
+ /* hover hai  */
+nav a:hover{
+  color: #ffffff;
+  transform: translateY(-2px) scale(1.07);
+  text-shadow: 0 0 12px rgba(255, 214, 214, 0.8),
+               0 0 24px rgba(255, 160, 160, 0.45);
+}
+
+/* Optional underline accent (high-end style) */
+nav a::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-3px;
+  width:0;
+  height:2px;
+  background:#ffb4c8;
+  transition:0.35s ease;
+  border-radius:4px;
+  transform:translateX(-50%);
+}
+nav a:hover::after{
+  width:80%;
+}
+
+.btn-nav{
+  background:#D4A373;border:none;padding:10px 18px;border-radius:6px;
+  font-weight:600;color:#111;cursor:pointer;transition:.3s;
+}
+.btn-nav:hover{
+  transform:translateY(-2px);box-shadow:0 4px 18px rgba(212,163,115,.45);
+}
+
+/* GRID */
+.guide-grid{
+  max-width:1000px;margin:60px auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:26px;padding:0 20px;
+}
+
+/* CARDS */
+.card{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(12px);
+  padding:22px;border-radius:18px;
+  box-shadow:0 0 30px rgba(0,0,0,.5);
+  text-align:center;
+  transition:.35s;
+}
+.card:hover{
+  transform:translateY(-6px) scale(1.03);
+  box-shadow:0 0 45px rgba(255,255,255,.18);
+}
+.card h2{margin:10px 0 6px;font-weight:600;}
+.card p{opacity:.85;font-size:14px;margin-bottom:16px;line-height:1.5;}
+.card button{
+  background:#D4A373;border:none;padding:8px 16px;border-radius:8px;
+  font-weight:600;color:#111;cursor:pointer;transition:.3s;
+}
+.card button:hover{transform:scale(1.08);}
+
+/* BUTTON EXPLANATION PANEL */
+.explain-box{
+  max-width:820px;margin:60px auto;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  padding:32px;border-radius:18px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 0 40px rgba(0,0,0,.55);
+}
+.explain-box h2{text-align:center;margin-bottom:20px;}
+.explain-box section{margin:16px 0;opacity:.9;line-height:1.6;}
+
+/* FOOTER */
+footer{text-align:center;padding:30px;opacity:.6;margin-top:40px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <h1 style="font-size:24px;font-weight:700;">VAISH 🪑</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="craftsman.html">Craft Story</a></li>
+    <li><a href="customizer.html">Build</a></li>
+    <li><a href="retailer-highlight.html">Retailers</a></li>
+    <li><a href="order-inquiry.html">Quote</a></li>
+  </ul>
+  <button class="btn-nav" onclick="location.href='order-inquiry.html'">Order</button>
+</nav>
+
+<h1 style="text-align:center;margin-top:40px;font-weight:600;">Website Navigation Guide 🧭</h1>
+
+<div class="guide-grid">
+
+  <div class="card">
+    <h2>Home</h2>
+    <p>Brand identity + chair concept overview.</p>
+    <button onclick="location.href='index.html'">Open</button>
+  </div>
+
+  <div class="card">
+    <h2>Products</h2>
+    <p>Chair catalog — designs, wood type, styles.</p>
+    <button onclick="location.href='products.html'">Open</button>
+  </div>
+
+  <div class="card">
+    <h2>Craft Story</h2>
+    <p>Carpenter ki asal kahani aur haath ki kala.</p>
+    <button onclick="location.href='craftsman.html'">Open</button>
+  </div>
+
+  <div class="card">
+    <h2>Craft Video</h2>
+    <p>Chair banne ka real workshop footage.</p>
+    <button onclick="location.href='craft-process.html'">Open</button>
+  </div>
+
+  <div class="card">
+    <h2>Retailers</h2>
+    <p>Jo carpenters VAISH ke saath listed hain.</p>
+    <button onclick="location.href='retailer-highlight.html'">Open</button>
+  </div>
+
+  <div class="card">
+    <h2>Order</h2>
+    <p>Chair banwaani ho to inquiry form send karein.</p>
+    <button onclick="location.href='order-inquiry.html'">Open</button>
+  </div>
+
+</div>
+
+<div class="explain-box">
+  <h2>Button Purpose Guide 🎛️</h2>
+
+  <section><b>Register</b> → Apni basic info submit karna.</section>
+  <section><b>Order / Own The Craft</b> → Chair build start karne ki request.</section>
+  <section><b>Apply</b> → Retailer / Carpenter collaboration ke liye.</section>
+  <section><b>Learn More</b> → Product / Story / Info deep details.</section>
+  <section><b>View More</b> → Ek particular chair ka close in-depth look.</section>
+  <section><b>Offers / Calculator</b> → Price / Quantity / Discount check.</section>
+  <section><b>Contact / Support</b> → Direct help ya callback request.</section>
+</div>
+
+<footer>Made with clarity • VAISH™</footer>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Inquiry | VAISH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+body{
+  margin:0;
+  font-family:Poppins, sans-serif;
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+  display:flex; 
+  flex-direction:column;
+}
+
+nav{
+  display:flex;
+   justify-content:space-between; 
+   align-items:center;
+  padding:16px 54px; 
+  color:white;
+}
+
+nav ul{
+  display:flex; 
+  gap:35px; 
+  list-style:none;
+}
+
+nav a{
+  text-decoration:none;
+  color:white;
+  font-weight:400;
+}
+
+.btn-fill{
+  background:#FFB6CF;
+   border:none; 
+   padding:10px 18px; 
+   border-radius:8px;
+  font-weight:600; 
+  cursor:pointer; 
+  color:#111; 
+  transition:.3s;
+}
+
+.btn-fill:hover{
+  transform:translateY(-2px) scale(1.04); 
+  box-shadow:0 6px 18px rgba(255,182,207,.45);
+}
+
+.form-wrapper{display:flex;
+  justify-content:center;
+  align-items:center;
+  height:88vh;
+}
+
+.glass-box{
+  width:380px;
+  text-align:center; 
+  color:white;
+  background:rgba(255,255,255,.14); 
+  backdrop-filter:blur(16px);
+  padding:32px; 
+  border-radius:18px;
+  box-shadow:0 0 18px rgba(255,255,255,.25);
+  animation:fadeIn .7s ease-out;
+}
+
+@keyframes fadeIn{from{opacity:0;
+  transform:translateY(20px);
+}to{opacity:1;
+  transform:translateY(0);
+} }
+
+input{
+  width:100%;
+   padding:13px;
+    margin:12px 0;
+  border-radius:10px; 
+  border:none; 
+  outline:none;
+  font-size:15px;
+   background:white;
+}
+
+#msg{margin-top:10px;
+font-weight:600;
+color:#FFDEE6;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <h1 style="font-family:'Rubik Glitch Pop';">VAISH &#129681;</h1>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="retailer-highlight.html">Retailers</a></li>
+    <li><a href="learnmore.html">About</a></li>
+  </ul>
+  <button class="btn-fill" onclick="location.href='register.html'">Register</button>
+</nav>
+
+<section class="form-wrapper">
+  <div class="glass-box">
+    <h2>Request a Quote &#128221;</h2>
+    <p>Enter your details and we’ll contact you shortly.</p>
+
+    <form id="orderForm">
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="text" id="phone" placeholder="Phone Number" required>
+      <input type="text" id="model" placeholder="Chair Model Name" required>
+      <input type="text" id="city" placeholder="City" required>
+      <button type="submit" class="btn-fill">Submit</button>
+    </form>
+
+    <p id="msg"></p>
+  </div>
+</section>
+
+<script>
+const form = document.getElementById("orderForm");
+const msg = document.getElementById("msg");
+
+form.addEventListener("submit",(e)=>{
+  e.preventDefault();
+
+  let inquiry={
+    name:name.value,
+    phone:phone.value,
+    model:model.value,
+    city:city.value
+  };
+
+  let data=JSON.parse(localStorage.getItem("VAISH_inquiries"))||[];
+  data.push(inquiry);
+  localStorage.setItem("VAISH_inquiries",JSON.stringify(data));
+
+  msg.innerHTML="&#9989; Inquiry Submitted! Redirecting...";
+  
+  // Redirect info flag
+  localStorage.setItem("VAISH_recent_submit","true");
+
+  setTimeout(()=>{
+    window.location.href="retailer-highlight.html";
+  },1400);
+});
+</script>
+
+</body>
+</html>
